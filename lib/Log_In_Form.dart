@@ -2,6 +2,9 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'constants.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:fluttergram/User_Data.dart';
+import 'package:fluttergram/User_DataBase.dart';
+import 'package:fluttergram/HomePage.dart';
 
 class LogInForm extends StatefulWidget {
   @override
@@ -9,8 +12,8 @@ class LogInForm extends StatefulWidget {
 }
 
 class _LogInFormState extends State<LogInForm> {
-  String username;
-  String password;
+  String username = '';
+  String password = '';
   final _logInFormKey = GlobalKey<FormState>();
   @override
   Widget build(BuildContext context) {
@@ -75,6 +78,15 @@ class _LogInFormState extends State<LogInForm> {
 
                 Scaffold.of(context)
                     .showSnackBar(SnackBar(content: Text('Processing Data')));
+                if (Validation(userName: username, password: password)) {
+                  print('Log In Successful');
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => Home(),
+                    ),
+                  );
+                }
               }
             },
             child: Text('Log In'),

@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'constants.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'User_Data.dart';
+import 'User_DataBase.dart';
 
 class SignUpForm extends StatefulWidget {
   @override
@@ -8,8 +10,10 @@ class SignUpForm extends StatefulWidget {
 }
 
 class _SignUpFormState extends State<SignUpForm> {
+  UserData userdata = UserData();
   String username;
   String password;
+  //Map userDatabase = Map<String, UserData>();
   final _SignUpFormKey = GlobalKey<FormState>();
   @override
   Widget build(BuildContext context) {
@@ -36,6 +40,7 @@ class _SignUpFormState extends State<SignUpForm> {
                   return 'Username Can\'t be Empty';
                 }
                 username = value;
+                userdata.setUsername(value);
                 return null;
               },
             ),
@@ -60,7 +65,7 @@ class _SignUpFormState extends State<SignUpForm> {
                 if (value.isEmpty) {
                   return 'Password Field Can\'t be Empty';
                 }
-                password = value;
+                userdata.setPassword(value);
                 return null;
               },
             ),
@@ -73,8 +78,24 @@ class _SignUpFormState extends State<SignUpForm> {
                 // you'd often call a server or save the information in a database.
 
                 Scaffold.of(context).showSnackBar(
-                    SnackBar(content: Text('Processing Request')));
-                // Navigator.pushNamed(context, '/Process');
+                  SnackBar(
+                    content: Text('Processing Request'),
+                  ),
+                );
+                UserDataBase(
+                  userName: username,
+                  userdata: userdata,
+                );
+                Scaffold.of(context).showSnackBar(
+                  SnackBar(
+                    content: Text('Account Successfully Created'),
+                  ),
+                );
+                Future.delayed(const Duration(milliseconds: 8500), () {
+                  setState(() {
+                    Navigator.pop(context);
+                  });
+                });
               }
             },
             child: Text('Sign Up'),

@@ -1,15 +1,14 @@
 import 'package:flutter/material.dart';
-import 'main.dart';
-import 'constants.dart';
-import 'Sign_Up_Form.dart';
+import '../Components/constants.dart';
+import '../Forms/Log_In_Form.dart';
 
-class SignUp extends StatefulWidget {
+class LogIn extends StatefulWidget {
   @override
-  _SignUpState createState() => _SignUpState();
+  _LogInState createState() => _LogInState();
 }
 
-class _SignUpState extends State<SignUp> {
-  SignUpForm signUp = SignUpForm();
+class _LogInState extends State<LogIn> {
+  LogInForm login = LogInForm();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -24,7 +23,7 @@ class _SignUpState extends State<SignUp> {
       ),
       body: Column(
         mainAxisAlignment: MainAxisAlignment.center,
-        children: [signUp],
+        children: [login],
       ),
     );
   }

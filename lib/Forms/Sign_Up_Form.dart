@@ -1,24 +1,24 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'constants.dart';
+import '../Components/constants.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:fluttergram/User_Data.dart';
-import 'package:fluttergram/User_DataBase.dart';
-import 'package:fluttergram/HomePage.dart';
+import '../Components/User_Data.dart';
+import '../Components/User_DataBase.dart';
 
-class LogInForm extends StatefulWidget {
+class SignUpForm extends StatefulWidget {
   @override
-  _LogInFormState createState() => _LogInFormState();
+  _SignUpFormState createState() => _SignUpFormState();
 }
 
-class _LogInFormState extends State<LogInForm> {
-  String username = '';
-  String password = '';
-  final _logInFormKey = GlobalKey<FormState>();
+class _SignUpFormState extends State<SignUpForm> {
+  UserData userdata = UserData();
+  String username;
+  String password;
+  //Map userDatabase = Map<String, UserData>();
+  final _SignUpFormKey = GlobalKey<FormState>();
   @override
   Widget build(BuildContext context) {
     return Form(
-      key: _logInFormKey,
+      key: _SignUpFormKey,
       child: Column(
         children: [
           Padding(
@@ -31,7 +31,7 @@ class _LogInFormState extends State<LogInForm> {
                   color: Colors.black,
                 ),
                 border: const OutlineInputBorder(),
-                labelText: 'Enter your username',
+                labelText: 'Enter a new username',
                 labelStyle: kAppBarTExtStyle,
                 focusedBorder: OutlineInputBorder(),
               ),
@@ -40,6 +40,7 @@ class _LogInFormState extends State<LogInForm> {
                   return 'Username Can\'t be Empty';
                 }
                 username = value;
+                userdata.setUsername(value);
                 return null;
               },
             ),
@@ -52,7 +53,7 @@ class _LogInFormState extends State<LogInForm> {
                   FontAwesomeIcons.asterisk,
                   color: Colors.black,
                 ),
-                labelText: 'Enter your Password',
+                labelText: 'Enter a new Password',
                 labelStyle: kAppBarTExtStyle,
                 focusColor: Colors.black,
                 border: const OutlineInputBorder(),
@@ -64,7 +65,7 @@ class _LogInFormState extends State<LogInForm> {
                 if (value.isEmpty) {
                   return 'Password Field Can\'t be Empty';
                 }
-                password = value;
+                userdata.setPassword(value);
                 return null;
               },
             ),
@@ -72,32 +73,34 @@ class _LogInFormState extends State<LogInForm> {
           RaisedButton(
             onPressed: () {
               // Validate returns true if the form is valid, otherwise false.
-              if (_logInFormKey.currentState.validate()) {
+              if (_SignUpFormKey.currentState.validate()) {
                 // If the form is valid, display a snackbar. In the real world,
                 // you'd often call a server or save the information in a database.
 
-                Scaffold.of(context)
-                    .showSnackBar(SnackBar(content: Text('Processing Data')));
-                if (Validation(userName: username, password: password)) {
-                  print('Log In Successful');
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) => Home(),
-                    ),
-                  );
-                }
+                Scaffold.of(context).showSnackBar(
+                  SnackBar(
+                    content: Text('Processing Request'),
+                  ),
+                );
+                UserDataBase(
+                  userName: username,
+                  userdata: userdata,
+                );
+                Scaffold.of(context).showSnackBar(
+                  SnackBar(
+                    content: Text('Account Successfully Created'),
+                  ),
+                );
+                Future.delayed(const Duration(milliseconds: 8500), () {
+                  setState(() {
+                    Navigator.pop(context);
+                  });
+                });
               }
             },
-            child: Text('Log In'),
+            child: Text('Sign Up'),
           ),
           SizedBox(height: 50),
-          RaisedButton(
-            onPressed: () {
-              Navigator.pushNamed(context, '/SignUp');
-            },
-            child: Text('New User ? Sign Up here'),
-          ),
         ],
       ),
     );

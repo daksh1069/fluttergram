@@ -1,24 +1,23 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'constants.dart';
+import '../Components/constants.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'User_Data.dart';
-import 'User_DataBase.dart';
+import 'package:fluttergram/Components/User_DataBase.dart';
+import 'package:fluttergram/Pages/HomePage.dart';
 
-class SignUpForm extends StatefulWidget {
+class LogInForm extends StatefulWidget {
   @override
-  _SignUpFormState createState() => _SignUpFormState();
+  _LogInFormState createState() => _LogInFormState();
 }
 
-class _SignUpFormState extends State<SignUpForm> {
-  UserData userdata = UserData();
-  String username;
-  String password;
-  //Map userDatabase = Map<String, UserData>();
-  final _SignUpFormKey = GlobalKey<FormState>();
+class _LogInFormState extends State<LogInForm> {
+  String username = '';
+  String password = '';
+  final _logInFormKey = GlobalKey<FormState>();
   @override
   Widget build(BuildContext context) {
     return Form(
-      key: _SignUpFormKey,
+      key: _logInFormKey,
       child: Column(
         children: [
           Padding(
@@ -31,7 +30,7 @@ class _SignUpFormState extends State<SignUpForm> {
                   color: Colors.black,
                 ),
                 border: const OutlineInputBorder(),
-                labelText: 'Enter a new username',
+                labelText: 'Enter your username',
                 labelStyle: kAppBarTExtStyle,
                 focusedBorder: OutlineInputBorder(),
               ),
@@ -40,7 +39,6 @@ class _SignUpFormState extends State<SignUpForm> {
                   return 'Username Can\'t be Empty';
                 }
                 username = value;
-                userdata.setUsername(value);
                 return null;
               },
             ),
@@ -53,7 +51,7 @@ class _SignUpFormState extends State<SignUpForm> {
                   FontAwesomeIcons.asterisk,
                   color: Colors.black,
                 ),
-                labelText: 'Enter a new Password',
+                labelText: 'Enter your Password',
                 labelStyle: kAppBarTExtStyle,
                 focusColor: Colors.black,
                 border: const OutlineInputBorder(),
@@ -65,7 +63,7 @@ class _SignUpFormState extends State<SignUpForm> {
                 if (value.isEmpty) {
                   return 'Password Field Can\'t be Empty';
                 }
-                userdata.setPassword(value);
+                password = value;
                 return null;
               },
             ),
@@ -73,34 +71,32 @@ class _SignUpFormState extends State<SignUpForm> {
           RaisedButton(
             onPressed: () {
               // Validate returns true if the form is valid, otherwise false.
-              if (_SignUpFormKey.currentState.validate()) {
+              if (_logInFormKey.currentState.validate()) {
                 // If the form is valid, display a snackbar. In the real world,
                 // you'd often call a server or save the information in a database.
 
-                Scaffold.of(context).showSnackBar(
-                  SnackBar(
-                    content: Text('Processing Request'),
-                  ),
-                );
-                UserDataBase(
-                  userName: username,
-                  userdata: userdata,
-                );
-                Scaffold.of(context).showSnackBar(
-                  SnackBar(
-                    content: Text('Account Successfully Created'),
-                  ),
-                );
-                Future.delayed(const Duration(milliseconds: 8500), () {
-                  setState(() {
-                    Navigator.pop(context);
-                  });
-                });
+                Scaffold.of(context)
+                    .showSnackBar(SnackBar(content: Text('Processing Data')));
+                if (Validation(userName: username, password: password)) {
+                  print('Log In Successful');
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => Home(),
+                    ),
+                  );
+                }
               }
             },
-            child: Text('Sign Up'),
+            child: Text('Log In'),
           ),
           SizedBox(height: 50),
+          RaisedButton(
+            onPressed: () {
+              Navigator.pushNamed(context, '/SignUp');
+            },
+            child: Text('New User ? Sign Up here'),
+          ),
         ],
       ),
     );

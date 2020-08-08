@@ -1,5 +1,4 @@
-import 'package:flutter/material.dart';
-import 'package:fluttergram/User_Data.dart';
+import 'package:fluttergram/Components/User_Data.dart';
 
 Map userDatabase = Map<String, UserData>();
 

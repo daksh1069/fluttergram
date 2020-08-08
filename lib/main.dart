@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:fluttergram/Log_In.dart';
-import 'Sign_Up.dart';
+import 'package:fluttergram/Pages/Log_In.dart';
+import 'Pages/Sign_Up.dart';
 
 void main() {
   runApp(FlutterGram());

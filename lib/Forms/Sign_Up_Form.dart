@@ -4,13 +4,14 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import '../Components/User_Data.dart';
 import '../Components/User_DataBase.dart';
 
+UserData userdata = UserData();
+
 class SignUpForm extends StatefulWidget {
   @override
   _SignUpFormState createState() => _SignUpFormState();
 }
 
 class _SignUpFormState extends State<SignUpForm> {
-  UserData userdata = UserData();
   String username;
   String password;
   //Map userDatabase = Map<String, UserData>();

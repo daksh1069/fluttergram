@@ -11,8 +11,8 @@ class LogInForm extends StatefulWidget {
 }
 
 class _LogInFormState extends State<LogInForm> {
-  String username = '';
-  String password = '';
+  String username;
+  String password;
   final _logInFormKey = GlobalKey<FormState>();
   @override
   Widget build(BuildContext context) {

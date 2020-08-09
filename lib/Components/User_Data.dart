@@ -1,9 +1,16 @@
 import 'package:flutter/cupertino.dart';
 
 class UserData {
+  String name = 'Sample Name';
   String _username;
   String _password;
-  FileImage profilePic;
+  Image profilePic = Image.network(
+      'https://qph.fs.quoracdn.net/main-thumb-80688729-200-euvvkwdkkaxmrufugouqlgiyvmwxfflz.jpeg');
+  String aboutMe = 'Sample About Me';
+
+  String getName() {
+    return name;
+  }
 
   String getUserName() {
     return _username;
@@ -13,7 +20,7 @@ class UserData {
     return _password;
   }
 
-  FileImage getDP() {
+  Image getDP() {
     return profilePic;
   }
 
@@ -29,5 +36,17 @@ class UserData {
     if (username == _username) {
       return _password;
     }
+  }
+
+  String getAboutMe() {
+    return aboutMe;
+  }
+
+  void setAboutMe(String aboutMeInput) {
+    aboutMe = aboutMeInput;
+  }
+
+  void setName(String Name) {
+    name = Name;
   }
 }

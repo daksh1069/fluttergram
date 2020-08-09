@@ -7,9 +7,10 @@ class BottomBar extends StatefulWidget {
 
 class _BottomBarState extends State<BottomBar> {
   int index = 0;
-  void SetIndex(int newIndex) {
+  void setIndex(int newIndex) {
     setState(() {
       index = newIndex;
+      Navigator.pushNamed(context, '/ProfilePage');
     });
   }
 
@@ -41,7 +42,7 @@ class _BottomBarState extends State<BottomBar> {
       ],
       currentIndex: index,
       selectedItemColor: Colors.amber[800],
-      onTap: SetIndex,
+      onTap: setIndex,
     );
   }
 }

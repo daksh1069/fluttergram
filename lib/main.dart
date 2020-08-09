@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:fluttergram/Pages/Log_In.dart';
 import 'Pages/Sign_Up.dart';
 import 'package:fluttergram/Pages/HomePage.dart';
+import 'package:fluttergram/Pages/Profile_Page.dart';
 
 void main() {
   runApp(FlutterGram());
@@ -20,6 +21,7 @@ class FlutterGram extends StatelessWidget {
         '/LogIn': (context) => LogIn(),
         '/SignUp': (context) => SignUp(),
         '/HomePage': (context) => Home(),
+        '/ProfilePage': (context) => ProfilePage(),
       },
     );
   }

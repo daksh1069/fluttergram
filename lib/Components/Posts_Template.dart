@@ -1,16 +1,18 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+import 'package:fluttergram/Forms/Sign_Up_Form.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'User_Data.dart';
 import 'constants.dart';
 
 class PostCard extends StatelessWidget {
-  PostCard({this.userInfo, this.caption});
-  final Image imagePosted = Image.network(
-      'https://images.unsplash.com/photo-1477959858617-67f85cf4f1df?ixlib=rb-1.2.1&auto=format&fit=crop&w=3213&q=80');
+  PostCard({this.userInfo, this.caption, this.postNumber});
+  final List<Image> imagePosted = userdata.getPosts();
   final String caption;
   final UserData userInfo;
+  final int postNumber;
+
   @override
   Widget build(BuildContext context) {
     final String Name = userInfo.getUserName();
@@ -31,7 +33,7 @@ class PostCard extends StatelessWidget {
                     userInfo.getUserName(),
                     style: kUsernamePostDisplay,
                   ),
-                  imagePosted,
+                  userInfo.getPosts()[postNumber],
                   Row(
                     children: [
                       GestureDetector(

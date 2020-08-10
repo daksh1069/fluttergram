@@ -92,7 +92,7 @@ class _SignUpFormState extends State<SignUpForm> {
                     content: Text('Account Successfully Created'),
                   ),
                 );
-                Future.delayed(const Duration(milliseconds: 8500), () {
+                Future.delayed(const Duration(milliseconds: 500), () {
                   setState(() {
                     Navigator.pop(context);
                   });

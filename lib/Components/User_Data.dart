@@ -7,6 +7,7 @@ class UserData {
   Image profilePic = Image.network(
       'https://qph.fs.quoracdn.net/main-thumb-80688729-200-euvvkwdkkaxmrufugouqlgiyvmwxfflz.jpeg');
   String aboutMe = 'Sample About Me';
+  List<Image> posts = [];
 
   String getName() {
     return name;
@@ -48,5 +49,17 @@ class UserData {
 
   void setName(String Name) {
     name = Name;
+  }
+
+  void uploadPost(Image value) {
+    posts.add(value);
+  }
+
+  List<Image> getPosts() {
+    return posts;
+  }
+
+  int listsize() {
+    return posts.length;
   }
 }

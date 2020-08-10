@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/painting.dart';
+import 'package:fluttergram/Components/Post_Grid.dart';
 import 'package:fluttergram/Components/constants.dart';
 import 'package:fluttergram/Forms/Sign_Up_Form.dart';
 
@@ -12,6 +13,12 @@ class ProfilePage extends StatefulWidget {
 class _ProfilePageState extends State<ProfilePage> {
   @override
   Widget build(BuildContext context) {
+    userdata.uploadPost(
+      Image.network(
+          'https://images.unsplash.com/photo-1477959858617-67f85cf4f1df?ixlib=rb-1.2.1&auto=format&fit=crop&w=3213&q=80'),
+    );
+    userdata.uploadPost(Image.network(
+        'https://qph.fs.quoracdn.net/main-thumb-80688729-200-euvvkwdkkaxmrufugouqlgiyvmwxfflz.jpeg'));
     return Scaffold(
       appBar: AppBar(
         title: Title(
@@ -51,42 +58,7 @@ class _ProfilePageState extends State<ProfilePage> {
               ),
             ],
           ),
-//          CustomScrollView(
-//            scrollDirection: Axis.vertical,
-//            shrinkWrap: true,
-//            slivers: [
-//              SliverGrid(
-//                gridDelegate: SliverGridDelegateWithMaxCrossAxisExtent(
-//                  maxCrossAxisExtent: 200.0,
-//                  mainAxisSpacing: 10.0,
-//                  crossAxisSpacing: 10.0,
-//                  childAspectRatio: 4.0,
-//                ),
-//                delegate: SliverChildBuilderDelegate(
-//                  (BuildContext context, int index) {
-//                    return Container(
-//                      alignment: Alignment.center,
-//                      color: Colors.teal[100 * (index % 9)],
-//                      child: Text('Grid Item $index'),
-//                    );
-//                  },
-//                  childCount: 20,
-//                ),
-//              ),
-//              SliverFixedExtentList(
-//                itemExtent: 50.0,
-//                delegate: SliverChildBuilderDelegate(
-//                  (BuildContext context, int index) {
-//                    return Container(
-//                      alignment: Alignment.center,
-//                      color: Colors.lightBlue[100 * (index % 9)],
-//                      child: Text('List Item $index'),
-//                    );
-//                  },
-//                ),
-//              ),
-//            ],
-//          )
+          SingleChildScrollView(child: GridPost())
         ],
       ),
     );

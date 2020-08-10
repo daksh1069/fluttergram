@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:fluttergram/Components/Data_in_Post_Grid.dart';
 import 'package:fluttergram/Forms/Sign_Up_Form.dart';
 
 class GridPost extends StatefulWidget {
@@ -10,10 +11,10 @@ class _GridPostState extends State<GridPost> {
   @override
   Widget build(BuildContext context) {
     return GridView.count(
-        shrinkWrap: true,
-        physics: ClampingScrollPhysics(),
+        scrollDirection: Axis.vertical,
+        physics: ScrollPhysics(),
         crossAxisCount: 3,
-        children: []);
+        children: imageList);
   }
 }
 //

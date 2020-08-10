@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/painting.dart';
+import 'package:fluttergram/Components/Bottom_Bar.dart';
 import 'package:fluttergram/Components/Post_Grid.dart';
 import 'package:fluttergram/Components/constants.dart';
 import 'package:fluttergram/Forms/Sign_Up_Form.dart';
@@ -58,9 +59,12 @@ class _ProfilePageState extends State<ProfilePage> {
               ),
             ],
           ),
-          SingleChildScrollView(child: GridPost())
+          Expanded(
+            child: GridPost(),
+          ),
         ],
       ),
+      bottomNavigationBar: BottomBar(),
     );
   }
 }

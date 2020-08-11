@@ -15,11 +15,11 @@ class _SignUpFormState extends State<SignUpForm> {
   String username;
   String password;
   //Map userDatabase = Map<String, UserData>();
-  final _SignUpFormKey = GlobalKey<FormState>();
+  final _signUpFormKey = GlobalKey<FormState>();
   @override
   Widget build(BuildContext context) {
     return Form(
-      key: _SignUpFormKey,
+      key: _signUpFormKey,
       child: Column(
         children: [
           Padding(
@@ -74,7 +74,7 @@ class _SignUpFormState extends State<SignUpForm> {
           RaisedButton(
             onPressed: () {
               // Validate returns true if the form is valid, otherwise false.
-              if (_SignUpFormKey.currentState.validate()) {
+              if (_signUpFormKey.currentState.validate()) {
                 // If the form is valid, display a snackbar. In the real world,
                 // you'd often call a server or save the information in a database.
 
@@ -83,7 +83,7 @@ class _SignUpFormState extends State<SignUpForm> {
                     content: Text('Processing Request'),
                   ),
                 );
-                UserDataBase(
+                userDataBase(
                   userName: username,
                   userdata: userdata,
                 );

@@ -3,6 +3,9 @@ import 'package:fluttergram/Pages/Log_In.dart';
 import 'Pages/Sign_Up.dart';
 import 'package:fluttergram/Pages/HomePage.dart';
 import 'package:fluttergram/Pages/Profile_Page.dart';
+import 'package:fluttergram/Pages/Search_Page.dart';
+import 'package:fluttergram/Pages/Add_Page.dart';
+import 'package:fluttergram/Pages/Notification_Page.dart';
 
 void main() {
   runApp(FlutterGram());
@@ -22,6 +25,9 @@ class FlutterGram extends StatelessWidget {
         '/SignUp': (context) => SignUp(),
         '/HomePage': (context) => Home(),
         '/ProfilePage': (context) => ProfilePage(),
+        '/Search': (context) => SearchPage(),
+        '/Add': (context) => AddPage(),
+        '/Notification': (context) => NotificationPage(),
       },
     );
   }

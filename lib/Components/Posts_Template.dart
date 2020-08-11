@@ -7,15 +7,14 @@ import 'User_Data.dart';
 import 'constants.dart';
 
 class PostCard extends StatelessWidget {
-  PostCard({this.userInfo, this.caption, this.postNumber});
+  PostCard({this.userInfo, this.postNumber});
   final List<Image> imagePosted = userdata.getPosts();
-  final String caption;
   final UserData userInfo;
   final int postNumber;
 
   @override
   Widget build(BuildContext context) {
-    final String Name = userInfo.getUserName();
+    final String name = userInfo.getUserName();
     return Padding(
       padding: const EdgeInsets.all(8.0),
       child: Container(
@@ -77,11 +76,11 @@ class PostCard extends StatelessWidget {
                   Row(
                     children: [
                       Text(
-                        '$Name : ',
+                        '$name : ',
                         style: kUserCaptionTextDisplay,
                       ),
                       Text(
-                        caption,
+                        userInfo.getCaptions()[postNumber],
                         style: kCaptionTextDisplay,
                       ),
                     ],

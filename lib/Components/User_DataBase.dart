@@ -2,12 +2,12 @@ import 'package:fluttergram/Components/User_Data.dart';
 
 Map userDatabase = Map<String, UserData>();
 
-Map UserDataBase({String userName, UserData userdata}) {
+Map userDataBase({String userName, UserData userdata}) {
   userDatabase[userName] = userdata;
   return userDatabase;
 }
 
-bool Validation({String userName, String password}) {
+bool validation({String userName, String password}) {
   UserData instance = userDatabase[userName];
   print(instance.getUserName());
   print(instance.getPassword());

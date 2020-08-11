@@ -77,7 +77,7 @@ class _LogInFormState extends State<LogInForm> {
 
                 Scaffold.of(context)
                     .showSnackBar(SnackBar(content: Text('Processing Data')));
-                if (Validation(userName: username, password: password)) {
+                if (validation(userName: username, password: password)) {
                   print('Log In Successful');
                   Navigator.push(
                     context,

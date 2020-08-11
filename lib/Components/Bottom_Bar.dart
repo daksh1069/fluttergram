@@ -7,10 +7,27 @@ class BottomBar extends StatefulWidget {
 
 class _BottomBarState extends State<BottomBar> {
   int index = 0;
+
+  String setPath(int newIndex) {
+    if (newIndex == 0) {
+      return '/HomePage';
+    } else if (newIndex == 1) {
+      return '/Search';
+    } else if (newIndex == 2) {
+      return '/Add';
+    } else if (newIndex == 3) {
+      return '/Notification';
+    } else if (newIndex == 4) {
+      return '/ProfilePage';
+    }
+    return '';
+  }
+
   void setIndex(int newIndex) {
+    String path = setPath(newIndex);
     setState(() {
       index = newIndex;
-      Navigator.pushNamed(context, '/ProfilePage');
+      Navigator.pushNamed(context, path);
     });
   }
 

@@ -8,6 +8,7 @@ class UserData {
       'https://qph.fs.quoracdn.net/main-thumb-80688729-200-euvvkwdkkaxmrufugouqlgiyvmwxfflz.jpeg');
   String aboutMe = 'Sample About Me';
   List<Image> posts = [];
+  List<String> captions = [];
 
   String getName() {
     return name;
@@ -37,6 +38,7 @@ class UserData {
     if (username == _username) {
       return _password;
     }
+    return '';
   }
 
   String getAboutMe() {
@@ -47,16 +49,21 @@ class UserData {
     aboutMe = aboutMeInput;
   }
 
-  void setName(String Name) {
-    name = Name;
+  void setName(String inputName) {
+    name = inputName;
   }
 
-  void uploadPost(Image value) {
+  void uploadPost({Image value, String inputCaption}) {
+    captions.add(inputCaption);
     posts.add(value);
   }
 
   List<Image> getPosts() {
     return posts;
+  }
+
+  List<String> getCaptions() {
+    return captions;
   }
 
   int listsize() {

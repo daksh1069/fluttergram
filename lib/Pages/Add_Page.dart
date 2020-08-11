@@ -16,7 +16,6 @@ class _AddPageState extends State<AddPage> {
   String caption;
   Future getImage() async {
     final pickedFile = await picker.getImage(source: ImageSource.gallery);
-    userdata.uploadPost(value: Image.file(image), inputCaption: caption);
     setState(() {
       image = File(pickedFile.path);
     });
@@ -74,6 +73,8 @@ class _AddPageState extends State<AddPage> {
                     if (_captionFormKey.currentState.validate()) {
                       Future.delayed(const Duration(milliseconds: 500), () {});
                     }
+                    userdata.uploadPost(
+                        value: Image.file(image), inputCaption: caption);
                   },
                   child: Text('Upload'),
                 ),

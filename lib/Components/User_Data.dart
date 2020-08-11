@@ -1,4 +1,8 @@
 import 'package:flutter/cupertino.dart';
+import 'package:fluttergram/Components/HomePagePostList.dart';
+import 'package:fluttergram/Forms/Sign_Up_Form.dart';
+
+int postnumber = 0;
 
 class UserData {
   String name = 'Sample Name';
@@ -56,6 +60,8 @@ class UserData {
   void uploadPost({Image value, String inputCaption}) {
     captions.add(inputCaption);
     posts.add(value);
+    addToPostList(userdata, postnumber);
+    postnumber++;
   }
 
   List<Image> getPosts() {

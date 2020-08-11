@@ -5,7 +5,7 @@ import 'package:fluttergram/Forms/Sign_Up_Form.dart';
 List<PostCard> list = [];
 
 List<PostCard> postList() {
-  if (postList().length == 0) {
+  if (list.length == 0) {
     return null;
   }
   return list;

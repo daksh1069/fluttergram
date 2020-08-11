@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:fluttergram/Components/HomePagePostList.dart';
 import 'package:fluttergram/Components/constants.dart';
 import 'package:fluttergram/Components/Bottom_Bar.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 class Home extends StatefulWidget {
   @override
@@ -23,7 +24,16 @@ class _HomeState extends State<Home> {
       ),
       body: SingleChildScrollView(
         child: Column(
-          children: postList(),
+          children: postList() == null
+              ? [
+                  Center(
+                    child: Text(
+                      '\n\n\n\nNO Post SO Far, go to Add and Upload your First Post',
+                      style: kAppBarTExtStyle,
+                    ),
+                  ),
+                ]
+              : postList(),
         ),
       ),
       bottomNavigationBar: BottomBar(),

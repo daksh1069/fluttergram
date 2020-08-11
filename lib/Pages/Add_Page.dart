@@ -82,11 +82,6 @@ class _AddPageState extends State<AddPage> {
                 RaisedButton(
                   onPressed: () {
                     if (_captionFormKey.currentState.validate()) {
-                      Scaffold.of(context).showSnackBar(
-                        SnackBar(
-                          content: Text('Processing Request'),
-                        ),
-                      );
                       Future.delayed(
                         const Duration(milliseconds: 1500),
                         () {

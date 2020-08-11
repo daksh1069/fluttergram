@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:fluttergram/Components/HomePagePostList.dart';
 import 'package:fluttergram/Components/constants.dart';
 import 'package:fluttergram/Components/Bottom_Bar.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:pull_to_refresh/pull_to_refresh.dart';
 
 class Home extends StatefulWidget {
   @override
@@ -10,8 +10,29 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> {
+  RefreshController _refreshController =
+      RefreshController(initialRefresh: false);
+
+  void _onRefresh() async {
+    // monitor network fetch
+    await Future.delayed(Duration(milliseconds: 1000));
+    // if failed,use refreshFailed()
+    _refreshController.refreshCompleted();
+  }
+
+  void _onLoading() async {
+    // monitor network fetch
+    await Future.delayed(Duration(milliseconds: 1000));
+    // if failed,use loadFailed(),if no data return,use LoadNodata()
+    setState(() {
+      build(context);
+    });
+    _refreshController.loadComplete();
+  }
+
   @override
   Widget build(BuildContext context) {
+    didUpdateWidget(Home());
     return Scaffold(
       appBar: AppBar(
         title: Center(
@@ -28,7 +49,7 @@ class _HomeState extends State<Home> {
               ? [
                   Center(
                     child: Text(
-                      '\n\n\n\nNO Post SO Far, go to Add and Upload your First Post',
+                      '\n\n\n\nNo Post So Far, go to Add and Upload your First Post',
                       style: kAppBarTExtStyle,
                     ),
                   ),

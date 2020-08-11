@@ -1,4 +1,5 @@
 import 'dart:io';
+import 'package:fluttergram/Components/HomePagePostList.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttergram/Forms/Sign_Up_Form.dart';
@@ -63,7 +64,6 @@ class _AddPageState extends State<AddPage> {
                         return 'Caption Can\'t be Empty';
                       }
                       caption = value;
-                      userdata.setUsername(value);
                       return null;
                     },
                   ),
@@ -73,8 +73,6 @@ class _AddPageState extends State<AddPage> {
                     if (_captionFormKey.currentState.validate()) {
                       Future.delayed(const Duration(milliseconds: 500), () {});
                     }
-                    userdata.uploadPost(
-                        value: Image.file(image), inputCaption: caption);
                   },
                   child: Text('Upload'),
                 ),
@@ -87,6 +85,9 @@ class _AddPageState extends State<AddPage> {
                         () {
                           setState(
                             () {
+                              userdata.uploadPost(
+                                  value: Image.file(image),
+                                  inputCaption: caption);
                               Navigator.pop(context);
                             },
                           );

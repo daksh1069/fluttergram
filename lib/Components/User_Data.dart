@@ -4,7 +4,7 @@ import 'package:fluttergram/Forms/Sign_Up_Form.dart';
 
 int postnumber = 0;
 
-class UserData {
+class UserData extends ChangeNotifier {
   String name = 'Sample Name';
   String _username;
   String _password;
@@ -62,6 +62,7 @@ class UserData {
     posts.add(value);
     addToPostList(userdata, postnumber);
     postnumber++;
+    notifyListeners();
   }
 
   List<Image> getPosts() {
@@ -72,7 +73,7 @@ class UserData {
     return captions;
   }
 
-  int listsize() {
+  int listSize() {
     return posts.length;
   }
 }

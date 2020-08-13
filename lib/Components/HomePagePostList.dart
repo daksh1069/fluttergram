@@ -12,7 +12,7 @@ List<PostCard> postList() {
 }
 
 void addToPostList(UserData data, int currentPosition) {
-  for (int i = currentPosition; i < userdata.listsize(); i++) {
+  for (int i = currentPosition; i < userdata.listSize(); i++) {
     list.add(
       PostCard(
         userInfo: data,

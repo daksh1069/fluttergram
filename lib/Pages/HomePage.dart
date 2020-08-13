@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:fluttergram/Components/AppBars.dart';
+import 'package:fluttergram/Components/Bodies.dart';
 import 'package:fluttergram/Components/HomePagePostList.dart';
 import 'package:fluttergram/Components/constants.dart';
 import 'package:fluttergram/Components/Bottom_Bar.dart';
@@ -34,29 +36,8 @@ class _HomeState extends State<Home> {
   Widget build(BuildContext context) {
     didUpdateWidget(Home());
     return Scaffold(
-      appBar: AppBar(
-        title: Center(
-          child: Text(
-            'FlutterGram',
-            style: kAppBarTExtStyle,
-            textAlign: TextAlign.center,
-          ),
-        ),
-      ),
-      body: SingleChildScrollView(
-        child: Column(
-          children: postList() == null
-              ? [
-                  Center(
-                    child: Text(
-                      '\n\n\n\nNo Post So Far, go to Add and Upload your First Post',
-                      style: kAppBarTExtStyle,
-                    ),
-                  ),
-                ]
-              : postList(),
-        ),
-      ),
+      appBar: appBar(),
+      body: Body(),
       bottomNavigationBar: BottomBar(),
     );
   }

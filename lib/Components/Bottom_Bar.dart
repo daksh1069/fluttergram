@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 
+int index = 0;
+
 class BottomBar extends StatefulWidget {
   @override
   _BottomBarState createState() => _BottomBarState();
 }
 
 class _BottomBarState extends State<BottomBar> {
-  int index = 0;
-
   String setPath(int newIndex) {
     if (newIndex == 0) {
       return '/HomePage';
@@ -24,10 +24,11 @@ class _BottomBarState extends State<BottomBar> {
   }
 
   void setIndex(int newIndex) {
-    String path = setPath(newIndex);
+    print('Current Index = $newIndex');
+//    String path = setPath(newIndex);
     setState(() {
       index = newIndex;
-      Navigator.pushNamed(context, path);
+      Navigator.pushNamed(context, '/HomePage');
     });
   }
 
